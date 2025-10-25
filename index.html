@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tech Pulse Weekly</title>
+    <span class="preheader">OpenAI's Sora 2 launches, AI safety debates heat up, and web design trends for 2025</span>
+    <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body, html {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #e6f2ff 0%, #f0f8ff 100%);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                     'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+    }
+    
+    /* Email container with magical shadow */
+    .email-wrap {
+        max-width: 680px;
+        margin: 32px auto;
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(30, 144, 255, 0.15),
+                    0 10px 30px rgba(0, 191, 255, 0.1);
+    }
+    
+    /* Genie Blue gradient header */
+    .header {
+        padding: 28px 32px;
+        background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .logo {
+        font-weight: 700;
+        color: white;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .logo::before {
+        content: '✨';
+        font-size: 28px;
+        animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes sparkle {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        25% { transform: rotate(-15deg) scale(1.1); }
+        75% { transform: rotate(15deg) scale(1.1); }
+    }
+    
+    /* Preheader - hidden but appears in email preview */
+    .preheader {
+        display: none !important;
+        visibility: hidden;
+        opacity: 0;
+        height: 0;
+        width: 0;
+        font-size: 1px;
+        line-height: 1px;
+    }
+    
+    /* Hero image */
+    .hero {
+        width: 100%;
+        display: block;
+        height: 320px;
+        object-fit: cover;
+    }
+    
+    /* Main content area */
+    .content {
+        padding: 32px 36px;
+        color: #1a1a1a;
+    }
+    
+    h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 16px 0;
+        color: #1e90ff;
+        line-height: 1.2;
+    }
+    
+    .lead {
+        font-size: 17px;
+        color: #4a5568;
+        margin: 0 0 28px 0;
+        line-height: 1.6;
+    }
+    
+    /* Article sections */
+    .article {
+        display: flex;
+        gap: 20px;
+        margin: 28px 0;
+        padding: 20px;
+        background: #f7fafc;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+    }
+    
+    .article:hover {
+        box-shadow: 0 4px 12px rgba(30, 144, 255, 0.15);
+        transform: translateY(-2px);
+    }
+    
+    .article .thumb {
+        flex: 0 0 160px;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .article img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+    
+    .article:hover img {
+        transform: scale(1.05);
+    }
+    
+    .article .txt {
+        flex: 1;
+    }
+    
+    .article h3 {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+        color: #1e3a8a;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+    
+    .article p {
+        margin: 0 0 12px 0;
+        color: #4a5568;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    
+    .article .meta {
+        font-size: 13px;
+        color: #718096;
+        font-style: italic;
+    }
+    
+    /* Genie Blue button with gradient */
+    .btn {
+        display: inline-block;
+        padding: 14px 28px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 8px;
+        box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(30, 144, 255, 0.4);
+    }
+    
+    .btn:active {
+        transform: translateY(0);
+    }
+    
+    .cta-section {
+        text-align: center;
+        margin: 36px 0 24px 0;
+        padding: 32px 20px;
+        background: linear-gradient(135deg, #e6f2ff 0%, #f0f9ff 100%);
+        border-radius: 12px;
+        border: 2px solid #bfdbfe;
+    }
+    
+    .cta-section h2 {
+        font-size: 24px;
+        color: #1e3a8a;
+        margin: 0 0 16px 0;
+    }
+    
+    /* Footer with blue accents */
+    .footer {
+        padding: 24px 36px;
+        font-size: 13px;
+        color: #64748b;
+        background: linear-gradient(135deg, #f8fafc 0%, #e6f2ff 100%);
+        line-height: 1.8;
+        border-top: 2px solid #bfdbfe;
+    }
+    
+    .footer a {
+        color: #1e90ff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    
+    .divider {
+        height: 2px;
+        background: linear-gradient(to right, transparent, #1e90ff, transparent);
+        margin: 24px 0;
+        border: none;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+        .email-wrap {
+            margin: 16px;
+            border-radius: 12px;
+        }
+        
+        .header {
+            padding: 20px 24px;
+        }
+        
+        .logo {
+            font-size: 20px;
+        }
+        
+        .content {
+            padding: 24px 20px;
+        }
+        
+        h1 {
+            font-size: 26px;
+        }
+        
+        .article {
+            flex-direction: column;
+            padding: 16px;
+        }
+        
+        .article .thumb {
+            width: 100%;
+            height: 180px;
+            flex: none;
+        }
+        
+        .hero {
+            height: 200px;
+        }
+        
+        .footer {
+            padding: 20px 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="email-wrap">
+            <!-- Header with Genie Blue gradient -->
+            <div class="header">
+                <div class="logo">Tech Pulse Weekly</div>
+            </div>
+            
+            <!-- Hero image -->
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80&auto=format&fit=crop" alt="Newsletter hero" class="hero">
+            
+            <!-- Main content -->
+            <div class="content">
+                <h1>Tech Pulse Weekly</h1>
+                <p class="lead">
+                    Welcome to this week's edition! We're bringing you the most important tech stories 
+                    from October 2025 — from groundbreaking AI launches to the latest web design trends 
+                    shaping the digital future.
+                </p>
+                
+                <hr class="divider">
+                
+                <!-- Article 1 -->
+                <div class="article">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1618044619888-009e412ff12a?w=800&q=80&auto=format&fit=crop" alt="OpenAI Sora 2">
+                    </div>
+                    <div class="txt">
+                        <h3>OpenAI Launches Sora 2: Revolutionary Text-to-Video AI</h3>
+                        <p>
+                            OpenAI officially launched <strong>Sora 2</strong>, marking a quantum leap in 
+                            text-to-video generation technology. The new model boasts enhanced temporal 
+                            consistency, improved physics understanding, and can generate videos up to 
+                            60 seconds with cinema-quality resolution. The Sora video app hit 
+                            <strong>1 million downloads</strong> in under five days despite being 
+                            invite-only and iOS-exclusive.
+                        </p>
+                        <div class="meta">Source: OpenAI | October 15, 2025</div>
+                        <a href="https://openai.com/sora" class="btn">Read Full Story →</a>
+                    </div>
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="article">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop" alt="AI Safety">
+                    </div>
+                    <div class="txt">
+                        <h3>800+ Leaders Call to End 'Superintelligence' Race</h3>
+                        <p>
+                            A coalition of prominent figures, including AI pioneers and tech leaders like 
+                            <strong>Steve Wozniak</strong> and <strong>Richard Branson</strong>, signed 
+                            a petition urging an end to efforts creating 'superintelligence.' The petition 
+                            warns of existential risks and calls for responsible AI development frameworks 
+                            with stronger safety protocols.
+                        </p>
+                        <div class="meta">Source: CNBC | October 22, 2025</div>
+                        <a href="#" class="btn">Read Full Story →</a>
+                    </div>
+                </div>
+                
+                <!-- Article 3 -->
+                <div class="article">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80&auto=format&fit=crop" alt="Web Design 2025">
+                    </div>
+                    <div class="txt">
+                        <h3>Web Design 2025: Brutalism & Anti-Design Revolution</h3>
+                        <p>
+                            Web design trends for 2025 are embracing <strong>brutalist principles</strong> 
+                            and anti-design aesthetics. From asymmetrical layouts to bold typography and 
+                            experimental navigation, designers are pushing boundaries. The Pantone Color 
+                            of 2025, <strong>Mocha Mousse</strong>, signals a shift toward warmer, 
+                            more nurturing palettes.
+                        </p>
+                        <div class="meta">Source: TheEDigital | October 2025</div>
+                        <a href="#" class="btn">Read Full Story →</a>
+                    </div>
+                </div>
+                
+                <!-- Article 4 -->
+                <div class="article">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&q=80&auto=format&fit=crop" alt="DeepSeek AI">
+                    </div>
+                    <div class="txt">
+                        <h3>DeepSeek Trains AI Model at 70% Lower Cost Than US Rivals</h3>
+                        <p>
+                            Chinese AI firm <strong>DeepSeek</strong> unveiled its R1 model, trained at 
+                            a cost 70% lower than comparable U.S. models through custom hardware and 
+                            proprietary optimization techniques. This positions DeepSeek as a direct 
+                            challenger to OpenAI and Anthropic, offering high-performance AI at 
+                            dramatically reduced costs for enterprise applications.
+                        </p>
+                        <div class="meta">Source: CNBC | September 19, 2025</div>
+                        <a href="#" class="btn">Read Full Story →</a>
+                    </div>
+                </div>
+                
+                <!-- Article 5 -->
+                <div class="article">
+                    <div class="thumb">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80&auto=format&fit=crop" alt="Healthcare AI">
+                    </div>
+                    <div class="txt">
+                        <h3>AI Model Predicts Lifetime Disease Risks with Delphi-2M</h3>
+                        <p>
+                            Researchers developed <strong>Delphi-2M</strong>, a transformer-based AI model 
+                            that predicts the progression of 1,256 diseases over decades using medical 
+                            history, lifestyle factors, and demographics. The breakthrough model can 
+                            estimate not just whether but <em>when</em> conditions may occur, 
+                            revolutionizing preventive healthcare planning.
+                        </p>
+                        <div class="meta">Source: News-Medical | September 18, 2025</div>
+                        <a href="#" class="btn">Read Full Story →</a>
+                    </div>
+                </div>
+                
+                <!-- Call to action -->
+                <div class="cta-section">
+                    <h2>Stay Connected</h2>
+                    <a href="#" class="btn">🚀 Visit Tech Pulse Hub</a>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <strong>Tech Pulse Weekly</strong> | Your source for breakthrough technology news<br>
+                Issue: October 25, 2025<br><br>
+                
+                You're receiving this email because you subscribed to Tech Pulse Weekly at example.com<br>
+                <a href="#">Unsubscribe</a> | 
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Email Preferences</a><br><br>
+                
+                © 2025 Tech Pulse Media. All rights reserved.
+            </div>
+        </div>
+    </center>
+</body>
+</html>
